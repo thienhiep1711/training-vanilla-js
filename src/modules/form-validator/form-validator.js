@@ -32,50 +32,63 @@ export default (el) => {
       inputWrap.classList.remove('has-value')
     }
 
-    const isValidEmail = (email) => {
+    const checkEmail = (input) => {
       const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return regex.test(String(email).toLowerCase())
+      if (regex.test(String(input.value).toLowerCase())) {
+        showSuccess(input)
+      } else {
+        showError(input, `${getFieldName(input)} is not vaild`)
+      }
+    }
+
+    const getFieldName = (input) => {
+      const inputWrap = input.parentElement
+      const label = inputWrap.querySelector('label') && inputWrap.querySelector('label').innerText
+        ? inputWrap.querySelector('label').innerText
+        : input.id.charAt(0).toUpperCase() + input.id.slice(1)
+      return label
+    }
+
+    const checkLength = (input, min, max) => {
+      if (input.value.length < min) {
+        showError(input, `${getFieldName(input)} must be at least ${min}`)
+      } else if (input.value.length > max) {
+        showError(input, `${getFieldName(input)} must be less than ${max}`)
+      } else {
+        showSuccess(input)
+      }
+    }
+
+    const checkRequired = (inputs) => {
+      if (inputs) {
+        inputs.map((item) => {
+          if (item.value.trim() === '') {
+            showError(item, `${getFieldName(item)} is required`)
+            isEmpty(item)
+          } else {
+            isHasValue(item)
+            showSuccess(item)
+          }
+        })
+      }
+    }
+
+    const checkPasswordMatch = (input1, input2) => {
+      const inputFirst = input1.value
+      const inputSecond = input2.value
+
+      if (inputFirst !== inputSecond) {
+        showError(input2, 'Passwords do not match')
+      }
     }
 
     el.addEventListener('submit', (e) => {
       e.preventDefault()
-      if (fullName && fullName.value === '') {
-        showError(fullName, 'Fullname is required')
-        isEmpty(fullName)
-      } else {
-        isHasValue(fullName)
-        showSuccess(fullName)
-      }
-      if (userName && userName.value === '') {
-        showError(userName, 'Username is required')
-        isEmpty(userName)
-      } else {
-        showSuccess(userName)
-        isHasValue(userName)
-      }
-      if (email && email.value === '') {
-        showError(email, 'Email is required')
-        isEmpty(email)
-      } else if (!isValidEmail(email.value)) {
-        showError(email, 'Email is not valid')
-      } else {
-        showSuccess(email)
-        isHasValue(email)
-      }
-      if (password && password.value === '') {
-        showError(password, 'Password is required')
-        isEmpty(password)
-      } else {
-        showSuccess(password)
-        isHasValue(password)
-      }
-      if (confirmPassword && confirmPassword.value === '') {
-        showError(confirmPassword, 'Confirm Password is required')
-        isEmpty(confirmPassword)
-      } else {
-        showSuccess(confirmPassword)
-        isHasValue(confirmPassword)
-      }
+      checkRequired([fullName, userName, email, password, confirmPassword])
+      checkLength(fullName, 10, 25)
+      checkLength(userName, 6, 25)
+      checkEmail(email)
+      checkPasswordMatch(password, confirmPassword)
     })
   }
 }
