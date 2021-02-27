@@ -1,27 +1,32 @@
-<div class="form-validator" data-module-init="form-validator">
+<div class="form-validator">
   <div class="container">
-    <form class="form form--primary">
+    <form class="form form--primary" data-module-init="form-validator">
       <div class="form__inner">
         <div class="h4 form__heading">Sign Up Account</div>
-      <div class="form__group">
-        <label for="name" class="form__label">Fullname</label>
-        <input class="input" type="text" name="fullname" id="fullname">
+      <div class="input__group form__group">
+        <label for="name" class="label label--input">Fullname</label>
+        <input type="text" class="input__field" name="fullname" id="fullname">
+        <small class="input__message"></small>
       </div>
-      <div class="form__group">
-        <label for="name" class="form__label">Username</label>
-        <input class="input" type="text" name="username" id="username">
+      <div class="input__group form__group">
+        <label for="name" class="label label--input">Username</label>
+        <input type="text" class="input__field" name="username" id="username">
+        <small class="input__message"></small>
       </div>
-      <div class="form__group">
-        <label for="name" class="form__label">Email</label>
-        <input class="input" type="text" name="email" id="email">
+      <div class="input__group form__group">
+        <label for="name" class="label label--input">Email</label>
+        <input type="text" class="input__field" name="email" id="email">
+        <small class="input__message"></small>
       </div>
-      <div class="form__group">
-        <label for="name" class="form__label">Password</label>
-        <input class="input" type="password" name="password" id="password">
+      <div class="input__group form__group">
+        <label for="name" class="label label--input">Password</label>
+        <input type="password" class="input__field" name="password" id="password">
+        <small class="input__message"></small>
       </div>
-      <div class="form__group">
-        <label for="name" class="form__label">Confirm Password</label>
-        <input class="input" type="password" name="confirm_password" id="confirm_password">
+      <div class="input__group form__group">
+        <label for="name" class="label label--input">Confirm Password</label>
+        <input type="password" class="input__field" name="confirm_password" id="confirm_password">
+        <small class="input__message"></small>
       </div>
       <button type="submit" class="button button--primary">Submit</button>
       </div>

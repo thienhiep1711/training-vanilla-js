@@ -1,4 +1,4 @@
-.input,
+.input__field,
 .select,
 .textarea {
   width: 100%;
@@ -6,7 +6,7 @@
   outline: none;
 }
 
-.input {
+.input__field {
   min-width: 270px;
   height: 42px;
   padding: 0 14px;
@@ -14,68 +14,34 @@
   &::placeholder {
     color: var(--c-black-light-20);
   }
+}
 
-  & + .label.label--input {
+.input__message {
+  display: none;
+  margin-top: 5px;
+}
+
+.input__group {
+  & .label.label--input {
     @mixin form-input;
-    position: absolute;
-    top: 50%;
-    left: 16px;
     color: var(--c-form-label);
-    transform: translateY(-50%);
     pointer-events: none;
   }
-
-  & + .label.label--search {
-    @mixin transition all, 0ms;
-    position: absolute;
-    top: 8px;
-    left: 0;
-    color: var(--c-form-placeholder);
-
-    @media (--ml) {
-      padding-left: 24px;
-      padding-top: 7px;
-    }
-  }
 }
 
-.input:focus,
-.input.has-value {
+.input__group.has-value {
   border-color: var(--c-black-light-20);
   box-shadow: none;
-
-  & + .label.label--input {
-    @mixin label-focus;
-    padding-left: 4px;
-    padding-right: 3px;
-    top: 0;
-    left: 12px;
-    color: var(--c-gray-dark-60);
-    background: var(--c-white);
-  }
-
-  & + .label.label--search {
-    display: none;
-  }
-}
-
-.input {
-  &.input--error {
-    border-color: var(--c-red);
-  }
 }
 
 .input--error {
-  border-color: var(--c-error);
-
-  & + .label.label--input {
-    color: var(--c-error);
+  & .input__field {
+    border-color: var(--c-red);
   }
-}
 
-.input.has-value:not(:focus) {
-  & + .label.label--input {
-    color: var(--c-gray-dark-60);
+  & .input__message {
+    color: var(--c-error);
+    display: block;
   }
 }
 
@@ -85,21 +51,6 @@
     top: 50%;
     left: 16px;
     transform: translateY(-50%);
-  }
-}
-
-.input__email {
-  & .input {
-    &:focus,
-    &.has-value {
-      & + .label.label--input {
-        color: var(--c-gray-dark-40);
-
-        &.label--error {
-          color: var(--c-error);
-        }
-      }
-    }
   }
 }
 
