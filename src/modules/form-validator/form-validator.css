@@ -1,11 +1,4 @@
-:root {
-  --c-red: red;
-}
-
-.test {
-  color: var(--c-red);
-
-  @media (--ml) {
-    color: blue;
-  }
+.form-validator {
+  margin: 20px auto;
+  max-width: 400px;
 }

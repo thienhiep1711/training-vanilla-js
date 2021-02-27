@@ -55,3 +55,23 @@ select {
   appearance: none;
   background-color: var(--c-white);
 }
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form--primary {
+  & .form__heading {
+    margin-bottom: 20px;
+  }
+
+  & .form__label {
+    margin-bottom: 6px;
+  }
+
+  & .form__inner {
+    padding: 20px;
+  }
+}

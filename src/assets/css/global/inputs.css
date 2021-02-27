@@ -8,7 +8,7 @@
 
 .input {
   min-width: 270px;
-  height: 48px;
+  height: 42px;
   padding: 0 14px;
 
   &::placeholder {
