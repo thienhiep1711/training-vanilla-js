@@ -7,7 +7,7 @@ export default el => {
     const sortBtn = document.getElementById('sort')
     const calculateWealth = document.getElementById('calculate-wealth')
 
-    const users = []
+    let users = []
 
     const getRandomUser = async () => {
       const res = await fetch('https://random-data-api.com/api/users/random_user')
@@ -44,10 +44,36 @@ export default el => {
     }
 
     const doubleMoney = () => {
+      users = users.map(user => {
+        return {
+          ...user,
+          money: user.money * 2
+        }
+      })
+      updateDOM()
+    }
 
+    const sortRichest = () => {
+      users = users.sort((a, b) => b.money - a.money)
+      updateDOM()
+    }
+
+    const sortMillionaires = () => {
+      users = users.filter((user) => user.money >= 1000000)
+      updateDOM()
+    }
+
+    const calculateTotalMoney = () => {
+      const total = users.reduce((acc, user) => (acc += user.money), 0)
+      const wealthEl = document.createElement('div')
+      wealthEl.innerHTML = `<h3>Total: <strong>${formatMoney(total)}</strong></h3>`
+      main.appendChild(wealthEl)
     }
 
     addUserBtn.addEventListener('click', getRandomUser)
     doubleBtn.addEventListener('click', doubleMoney)
+    sortBtn.addEventListener('click', sortRichest)
+    showMilionairesBtn.addEventListener('click', sortMillionaires)
+    calculateWealth.addEventListener('click', calculateTotalMoney)
   }
 }
