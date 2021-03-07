@@ -18,7 +18,7 @@ export default (el) => {
       if (video.paused) {
         play.innerHTML = 'Play'
       } else {
-        play.innerHTML = "Pause"
+        play.innerHTML = 'Pause'
       }
     }
 
