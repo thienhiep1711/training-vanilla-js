@@ -10,8 +10,8 @@ export default (el) => {
     const swap = document.getElementById('swap')
 
     const calculator = () => {
-      let currentBase = currencyBase.value
-      let exchangeBase = currencyExchange.value
+      const currentBase = currencyBase.value
+      const exchangeBase = currencyExchange.value
 
       fetch(`https://api.exchangerate.host/latest?base=${currentBase}`)
         .then(res => res.json())
