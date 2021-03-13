@@ -1,3 +1,5 @@
+/* global fetch */
+
 export default el => {
   if (el) {
     const main = document.getElementById('main')
@@ -29,7 +31,7 @@ export default el => {
     }
 
     const updateDOM = (providedData = users) => {
-      main.innerHTML = `<h2><strong>Person</strong>Wealth</h2>`
+      main.innerHTML = '<h2><strong>Person</strong>Wealth</h2>'
 
       providedData.forEach((user) => {
         const element = document.createElement('div')
@@ -40,7 +42,7 @@ export default el => {
     }
 
     const formatMoney = (value) => {
-      return '$' +value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+      return '$' + value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
     }
 
     const doubleMoney = () => {
