@@ -1,23 +1,41 @@
 <div class="hangman-game" data-module-init="hangman-game">
   <div class="hangman-game__inner">
-      <div class="hangman-game__container">
-        <strong class="hangman-game__title">Hangman Game</strong>
-        <svg class="hangman-game__svg figure" height="300" width="300">
-          <line x1="60" y1="20" x2="140" y2="20"></line>
-          <line x1="140" y1="20" x2="140" y2="50"></line>
-          <line x1="60" y1="20" x2="60" y2="230"></line>
-          <line x1="20" y1="230" x2="100" y2="230"></line>
+    <div class="hangman-game__container">
+      <strong class="hangman-game__title">Hangman Game</strong>
+      <svg class="hangman-game__svg figure" height="300" width="300">
+        <line x1="60" y1="20" x2="140" y2="20"></line>
+        <line x1="140" y1="20" x2="140" y2="50"></line>
+        <line x1="60" y1="20" x2="60" y2="230"></line>
+        <line x1="20" y1="230" x2="100" y2="230"></line>
 
-          <circle cx="140" cy="70" r="20" class="figure__path"></circle>
+        <circle cx="140" cy="70" r="20" class="figure__path"></circle>
 
-          <line x1="140" y1="90" x2="140" y2="150" class="figure__path"></line>
+        <line x1="140" y1="90" x2="140" y2="150" class="figure__path"></line>
 
-          <line x1="140" y1="120" x2="120" y2="100" class="figure__path"></line>
-          <line x1="140" y1="120" x2="160" y2="100" class="figure__path"></line>
+        <line x1="140" y1="120" x2="120" y2="100" class="figure__path"></line>
+        <line x1="140" y1="120" x2="160" y2="100" class="figure__path"></line>
 
-          <line x1="140" y1="150" x2="120" y2="180" class="figure__path"></line>
-          <line x1="140" y1="150" x2="160" y2="180" class="figure__path"></line>
-        </svg>
+        <line x1="140" y1="150" x2="120" y2="180" class="figure__path"></line>
+        <line x1="140" y1="150" x2="160" y2="180" class="figure__path"></line>
+      </svg>
+      <div class="wrong-letters-container">
+        <div id="wrong-letters"></div>
       </div>
+
+      <div class="word" id="word"></div>
+    </div>
+    <!-- Container for final message -->
+    <div class="popup-container" id="popup-container">
+      <div class="popup">
+        <h2 id="final-message"></h2>
+        <h3 id="final-message-reveal-word"></h3>
+        <button id="play-button">Play Again</button>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification-container" id="notification-container">
+      <p>You have already entered this letter</p>
+    </div>
   </div>
 </div>
