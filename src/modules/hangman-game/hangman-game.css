@@ -35,11 +35,8 @@
   }
 
   & .figure {
-    & .figure__path {
-      display: none;
-    }
-  }
 
+  }
 
   & .wrong-letters-container {
     position: absolute;
@@ -132,5 +129,8 @@
   & .notification-container.show {
     transform: translateY(-50px);
   }
+}
 
+.figure__path {
+  display: none;
 }
